@@ -59,6 +59,19 @@ app.get("/crud/:id", async (req, res) =>  {
     }
 });
 
+app.delete("/crud/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
 
+        const deleteUser = await User.destroy({
+            where: { id: id }
+        });
 
+        await deleteUser;
+        res.json("berhasil di hapus");
+    } catch (error) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+});
 app.listen(5000, () => console.log("port berjalan di 4500")); 
