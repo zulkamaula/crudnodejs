@@ -36,12 +36,29 @@ app.post("/crud", async (req,res) => {
 app.get("/crud", async (req, res) => {
     try {
         const getAllUser = await User.findAll({})
-        res.json(getAllUser)
+        res.json(getAllUser);
 
     } catch (err) {
         console.error(err.message);
         res.status(500).send("server error");
     }
 });
+
+app.get("/crud/:id", async (req, res) =>  {
+    try {
+        const id = req.params.id;
+
+        const getUser = await User.findOne({
+            where: { id: id }
+        });
+
+        res.json(getUser);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+});
+
+
 
 app.listen(5000, () => console.log("port berjalan di 4500")); 
