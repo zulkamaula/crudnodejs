@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 
 const db = require("./config/db");
-const User = require("./models/User");
 
 app.get("/", (req,res) => res.send("respon nodejs berhasil"));
 
