@@ -86,7 +86,7 @@ app.put("/crud/:id",async (req, res) => {
 
         const updateUser = await User({
             username, email, password
-        });
+        }, { where: {id:id} });
 
         await updateUser;
         res.json("Data bershasil di ubah")
