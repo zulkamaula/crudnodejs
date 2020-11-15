@@ -74,4 +74,26 @@ app.delete("/crud/:id", async (req, res) => {
         res.status(500).send("server error");
     }
 });
+
+app.put("/crud/:id",async (req, res) => {
+    try {
+        const {
+            username,
+            email,
+            password
+        } = req.body
+        const id = req.params.id
+
+        const updateUser = await User({
+            username, email, password
+        });
+
+        await updateUser;
+        res.json("Data bershasil di ubah")
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+})
+
 app.listen(5000, () => console.log("port berjalan di 4500")); 
