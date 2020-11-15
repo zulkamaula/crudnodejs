@@ -5,6 +5,8 @@ const db = require("./config/db");
 
 app.get("/", (req,res) => res.send("respon nodejs berhasil"));
 
+app.use(express.urlencoded({ extended: true }));
+
 db.authenticate().then(() =>
     console.log("berhasil terkoneksi dengan database")
 );
