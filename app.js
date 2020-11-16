@@ -79,17 +79,16 @@ app.delete("/crud_admin/:id", async (req, res) => {
     }
 });
 
-app.put("/crud_admin/:id",async (req, res) => {
+app.put("/crud_admin/:id", async (req, res) => {
     try {
-        const {
-            username,
-            email,
-            password
+        const { username, email, password
         } = req.body
         const id = req.params.id
 
-        const updateUser = await User({
-            username, email, password
+        const updateUser = await User.update({
+            username,
+            email, 
+            password
         }, { where: {id:id} });
 
         await updateUser;
@@ -165,26 +164,26 @@ app.delete("/crud_product/:id", async (req, res) => {
     }
 });
 
-// app.put("/crud_admin/:id",async (req, res) => {
-//     try {
-//         const {
-//             username,
-//             email,
-//             password
-//         } = req.body
-//         const id = req.params.id
+app.put("/crud_product/:id",async (req, res) => {
+    try {
+        const {
+            product_id,
+            product_name,
+            product_price
+        } = req.body;
+        const id = req.params.id;
 
-//         const updateUser = await User({
-//             username, email, password
-//         }, { where: {id:id} });
+        const updateProduct = await Product.update({
+            product_id, product_name, product_price
+        }, { where: { id:id } });
 
-//         await updateUser;
-//         res.json("Data bershasil di ubah")
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send("server error");
-//     }
-// });
+        await updateProduct;
+        res.json("Data bershasil di ubah")
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+});
 
 
 
