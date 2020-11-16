@@ -134,20 +134,20 @@ app.get("/crud_product", async (req, res) => {
     }
 });
 
-// app.get("/crud_admin/:id", async (req, res) =>  {
-//     try {
-//         const id = req.params.id;
+app.get("/crud_product/:id", async (req, res) =>  {
+    try {
+        const id = req.params.id;
 
-//         const getUser = await User.findOne({
-//             where: { id: id }
-//         });
+        const getProduct = await Product.findOne({
+            where: { id: id }
+        });
 
-//         res.json(getUser);
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send("server error");
-//     }
-// });
+        res.json(getProduct);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+});
 
 // app.delete("/crud_admin/:id", async (req, res) => {
 //     try {
