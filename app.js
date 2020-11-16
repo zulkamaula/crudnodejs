@@ -149,21 +149,21 @@ app.get("/crud_product/:id", async (req, res) =>  {
     }
 });
 
-// app.delete("/crud_admin/:id", async (req, res) => {
-//     try {
-//         const id = req.params.id;
+app.delete("/crud_product/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
 
-//         const deleteUser = await User.destroy({
-//             where: { id: id }
-//         });
+        const deleteProduct = await Product.destroy({
+            where: { id: id }
+        });
 
-//         await deleteUser;
-//         res.json("berhasil di hapus");
-//     } catch (error) {
-//         console.error(err.message);
-//         res.status(500).send("server error");
-//     }
-// });
+        await deleteProduct;
+        res.json("berhasil di hapus");
+    } catch (error) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+});
 
 // app.put("/crud_admin/:id",async (req, res) => {
 //     try {
