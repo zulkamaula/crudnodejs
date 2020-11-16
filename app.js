@@ -13,7 +13,7 @@ db.authenticate().then(() =>
 
 const User = require("./models/User");
 
-app.post("/crud", async (req,res) => {
+app.post("/crud_admin", async (req,res) => {
     try {
         const { username, email, password } = req.body;
 
@@ -33,7 +33,7 @@ app.post("/crud", async (req,res) => {
 });
 
 
-app.get("/crud", async (req, res) => {
+app.get("/crud_admin", async (req, res) => {
     try {
         const getAllUser = await User.findAll({})
         res.json(getAllUser);
@@ -44,7 +44,7 @@ app.get("/crud", async (req, res) => {
     }
 });
 
-app.get("/crud/:id", async (req, res) =>  {
+app.get("/crud_admin/:id", async (req, res) =>  {
     try {
         const id = req.params.id;
 
@@ -59,7 +59,7 @@ app.get("/crud/:id", async (req, res) =>  {
     }
 });
 
-app.delete("/crud/:id", async (req, res) => {
+app.delete("/crud_admin/:id", async (req, res) => {
     try {
         const id = req.params.id;
 
@@ -75,7 +75,7 @@ app.delete("/crud/:id", async (req, res) => {
     }
 });
 
-app.put("/crud/:id",async (req, res) => {
+app.put("/crud_admin/:id",async (req, res) => {
     try {
         const {
             username,
@@ -94,6 +94,6 @@ app.put("/crud/:id",async (req, res) => {
         console.error(err.message);
         res.status(500).send("server error");
     }
-})
+});
 
 app.listen(5000, () => console.log("port berjalan di 4500")); 
