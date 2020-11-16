@@ -123,16 +123,16 @@ app.post("/crud_product", async (req,res) => {
 });
 
 
-// app.get("/crud_admin", async (req, res) => {
-//     try {
-//         const getAllUser = await User.findAll({})
-//         res.json(getAllUser);
+app.get("/crud_product", async (req, res) => {
+    try {
+        const getAllProduct = await Product.findAll({})
+        res.json(getAllProduct);
 
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send("server error");
-//     }
-// });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+});
 
 // app.get("/crud_admin/:id", async (req, res) =>  {
 //     try {
